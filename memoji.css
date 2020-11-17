@@ -12,3 +12,12 @@ margin:40px 0;
   line-height: 47px;
 
 }
+.card_box{
+  margin: 0 auto;
+  width: 595px;
+  height: 440px;
+  display: grid;
+  grid-template-rows: repeat(3,130px);
+  grid-template-columns: repeat(4,130px);
+  grid-gap: 25px;
+}
