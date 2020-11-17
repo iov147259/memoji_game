@@ -1,0 +1,17 @@
+.block {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #ff0000;
+animation:move 3s;
+
+}
+
+.block:hover {
+  background-color: #ff0;
+  transition: background-color 500ms linear ;
+}
+
+

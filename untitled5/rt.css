@@ -1,0 +1,24 @@
+.block {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  width: 150px;
+  height: 150px;
+  background-color: #ff0000;
+  animation:move 3s linear infinite forwards;
+
+}
+
+.block:hover {
+  background-color: #ff0;
+  transition: background-color 500ms linear ;
+}
+@keyframes move {
+  from{transform: translate(0,0);}
+ 15%,90%{transform: translateX(100px);}
+  30%,75%{transform: translate(100px,100%)}
+ 45%,60%{transform-origin: center;
+     transform: translateX(100px) translate(100px,100%) rotate(145deg) scale(2);}
+  to{transform: translate(0,0);}
+
+}

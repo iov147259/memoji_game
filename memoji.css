@@ -1,0 +1,14 @@
+body{
+  margin: 0;
+  background-color: #CFD0CF;
+}
+
+.header{
+margin:40px 0;
+  text-align: center;
+  font-family: Arial;
+  flood-color: #434344;
+  font-size: 42px;
+  line-height: 47px;
+
+}
