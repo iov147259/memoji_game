@@ -8,24 +8,56 @@
 <body>
 <header>
 
-  <article class="header">Memoji</article>
+  <article class="header" tabindex="0" >Memoji</article>
 </header>
 <main>
 <article class="card_box">
-  <section class="card one"></section>
-  <section class="card two"></section>
-  <section class="card three"></section>
-  <section class="card four"></section>
-  <section class="card five"></section>
-  <section class="card six"></section>
-  <section class="card seven"></section>
-  <section class="card eight"></section>
-  <section class="card nine"></section>
-  <section class="card ten"></section>
-  <section class="card eleven"></section>
-  <section class="card twelve"></section>
-
+  <section tabindex="-1" id="img1" class="card one">
+    <label for="img1" class="label "> 🐭 </label>
+  </section>
+  <section tabindex="-1"class="card two" id="img2">
+    <label for="img2" class="label "> 🐱 </label>
+  </section>
+  <section tabindex="-1" class="card three" id="img3">
+    <label for="img3" class="label ">🐰</label>
+  </section>
+  <section tabindex="-1" class="card four" id="img4">
+    <label for="img4" class="label "> 🐹 </label>
+  </section>
+  <section tabindex="-1" class="card five" id="img5">
+    <label for="img5" class="label "> 🐯 </label>
+  </section>
+  <section tabindex="-1" class="card six" id="img6">
+    <label for="img6" class="label ">🐰</label>
+  </section>
+  <section tabindex="-1" class="card seven"  id="img7">
+    <label for="img7" class="label "> 🐱 </label>
+  </section>
+  <section tabindex="-1" class="card eight" id="img8">
+    <label for="img8" class="label "> 🐷 </label>
+  </section>
+  <section tabindex="-1"  class="card nine" id="img9">
+    <label for="img9" class="label "> 🐹 </label>
+  </section>
+  <section tabindex="-1" class="card ten" id="img10">
+    <label for="img10" class="label "> 🐷 </label>
+  </section>
+  <section tabindex="-1" class="card eleven" id="img11">
+    <label for="img11" class="label ">🐭 </label>
+  </section>
+  <section tabindex="-1" class="card twelve" id="img12">
+    <label for="img12" class="label "> 🐯 </label>
+  </section>
 </article>
 </main>
+<script>
+
+ document.activeElement.onclick=function (event) {
+    if(!event.target.classList.contains('go')&& event.target.classList.contains('card')){
+      event.target.classList.add('go');
+      event.target.querySelector('.label').classList.add('go_pick');
+    }
+ }
+</script>
 </body>
 </html>
