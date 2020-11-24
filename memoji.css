@@ -5,7 +5,7 @@ body{
 
 .header{
   outline: none;
-margin:40px 0;
+  margin:40px 0;
   text-align: center;
   font-family: Arial;
   flood-color: #434344;
@@ -37,17 +37,17 @@ margin:40px 0;
 }
 .go {
   outline: none;
-  animation: rotate linear 1s  0s forwards  ;
+  animation: rotate linear 1s  0s forwards   ;
 }
 .go_pick{
   animation: visibility linear 1s  600ms forwards ;
-font-size: 100px;
+  font-size: 100px;
 }
 .go_back{
-  animation: rotate linear 1s  0s backwards;
+  animation:reversrotate linear 1s 0ms forwards ;
 }
-.go_back_pick{
-  animation: visibility linear 1s   600ms backwards;
+.go_back_pick{font-size: 100px;
+  animation: nonvisibility linear 0.5s   0s backwards ;
 }
 
 @keyframes rotate {
@@ -56,8 +56,21 @@ font-size: 100px;
     background:white;
   }
 }
+@keyframes reversrotate {
+  from{transform: rotateY(180deg);
+    background:white;}
+  to{transform: rotateY(360deg);
+    background:linear-gradient(45deg,#22AB93,#19668D);;
+  }
+}
 @keyframes visibility {
   to{
-  visibility: visible;
+    visibility: visible;
+  }
+}
+@keyframes nonvisibility {
+  from{visibility: visible}
+  to{
+    visibility: hidden;
   }
 }
