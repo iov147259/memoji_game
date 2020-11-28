@@ -23,6 +23,8 @@ body{
   grid-gap: 25px;
 }
 .card{
+  cursor: pointer;
+  display: flex;
   outline: none;
   perspective: 600px;
   width: 135px;
@@ -32,8 +34,9 @@ body{
   box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
   background: linear-gradient(45deg,#22AB93,#19668D);
 }
-.label{
+.label{ margin: 12px auto;
   visibility: hidden;
+  cursor: pointer;
 }
 .go {
   outline: none;
@@ -41,19 +44,61 @@ body{
 }
 .go_pick{
   animation: visibility linear 1s  600ms forwards ;
-  font-size: 100px;
+  font-size: 75px;
+}
+.right_static{
+  animation: right_static 1ms forwards;
 }
 .go_back{
-  animation:reversrotate linear 1s 0ms forwards ;
+  animation:reversrotate linear 1s  forwards ;
 }
-.go_back_pick{font-size: 100px;
-  animation: nonvisibility linear 0.5s   0s backwards ;
+.go_back_pick{font-size: 75px;
+  animation: nonvisibility linear 0.5s    backwards ;
 }
+.right_torn{
+  animation: rotate_right linear 1s  0s forwards;
+}
+.rotate_wrong{
+  animation: rotate_wrong linear 1s  0s forwards;
+}
+.wrong_static{
+  animation: wrong_static 1ms forwards;
+}
+.go_back_wrong{
+  animation:reversrotatewrong linear 1s  forwards ;
+}
+@keyframes right_static {
+  from{transform: rotateY(180deg);
+    background:white}
+  to{  background: #5AD66F;
+    border: solid 5px #5AD66F;}
 
+}
+@keyframes wrong_static {
+  from{transform: rotateY(180deg);
+    background:white}
+  to{  background: #F44336;
+    border: solid 5px #F44336;}
+
+}
 @keyframes rotate {
 
   to{transform: rotateY(180deg);
     background:white;
+  }
+}
+@keyframes rotate_right {
+
+  to{transform: rotateY(180deg);
+    background: #5AD66F;
+    border: solid 5px #5AD66F;
+  }
+}
+@keyframes rotate_wrong {
+
+  to{transform: rotateY(180deg);
+    background: #F44336;
+    border: solid 5px #F44336;
   }
 }
 @keyframes reversrotate {
@@ -63,6 +108,15 @@ body{
     background:linear-gradient(45deg,#22AB93,#19668D);;
   }
 }
+@keyframes reversrotatewrong {
+  from{transform: rotateY(180deg);
+    background: #F44336;
+    border: solid 5px #F44336;}
+  to{transform: rotateY(360deg);
+    background:linear-gradient(45deg,#22AB93,#19668D);;
+  }
+}
+
 @keyframes visibility {
   to{
     visibility: visible;

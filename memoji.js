@@ -19,56 +19,81 @@ if (document.readyState == 'loading') {
   mix();
 }
 
+/*
+обработчик  одинаквых карт
+ */
 function rightlyTurn(firstcard, secondcard) {
-  firstcard.querySelector('.label').style.backgroundColor = "#5AD66F";
-  secondcard.querySelector('.label').style.backgroundColor = "#5AD66F";
   firstcard.classList.add("right");
+  firstcard.classList.add("right_static");
   secondcard.classList.add("right");
+  secondcard.classList.add("right_torn");
+  secondcard.querySelector(".label").classList.add("go_pick");
 }
 
+/*
+обработчик  разных карт
+ */
 function wrongTurn(firstcard, secondcard) {
+  firstcard.classList.add("wrong");
+  firstcard.classList.add("wrong_static");
+  secondcard.classList.add("wrong");
+  secondcard.classList.add("rotate_wrong");
+  secondcard.querySelector(".label").classList.add("go_pick");
 
-  firstcard.classList.remove("go");
-  firstcard.querySelector('.label').classList.remove("go_pick");
-  firstcard.classList.add("go_back");
-  firstcard.querySelector('.label').classList.add("go_back_pick");
-  firstcard.querySelector('.label').style.backgroundColor = "#F44336";
-  secondcard.classList.remove("go");
-  secondcard.querySelector('.label').classList.remove("go_pick");
-  secondcard.classList.add("go_back");
-  secondcard.querySelector('.label').classList.add("go_back_pick");
-  secondcard.querySelector('.label').style.backgroundColor = "#F44336";
 }
 
-function check(first_card, second_card) {
-  if (first_card.classList[2] == second_card.classList[2]) {
-    rightlyTurn(first_card, second_card);
+function check(firstcard, secondcar) {
+  if (firstcard.classList[2] === secondcar.classList[2]) {
+    rightlyTurn(firstcard, secondcar);
   } else {
-    wrongTurn(first_card, second_card);
+    wrongTurn(firstcard, secondcar);
   }
+
 }
 
 
 let cards = Array.from(document.getElementsByClassName("card"));
 cards.forEach(function (item) {
   item.addEventListener("click", function (event) {
-    if (!item.classList.contains("go")) {
-      if (item.classList.contains("go_back")) {
 
+    if (item.classList.contains("right")||item.classList.contains("wrong")) {
+      return;
+    }
+
+    let activeNow = document.querySelectorAll(".active");
+    let wrong=document.querySelectorAll(".wrong");
+    if(wrong.length===2){
+      wrong[0].classList.add("go_back_wrong");
+      wrong[1].classList.add("go_back_wrong");
+    }
+    if (activeNow.length === 1 && item !== activeNow[0]) {
+      check(activeNow[0], item);
+    }
+    if (activeNow.length === 2 ) {
+      activeNow[0].classList.remove("active");
+      activeNow[1].classList.remove("active");
+    }
+    if (!item.classList.contains("go")) {
+      if (item.classList.contains("go_back") ||item.classList.contains("wrong")) {
+        item.classList.remove("wrong");
         item.classList.remove("go_back");
         item.querySelector('.label').classList.remove("go_back_pick");
       }
       item.classList.add("go");
-      item.querySelector('.label').classList.add("go_pick");
+      item.querySelector('.label').classList.add("go_pick")
+
+
     } else {
-      if (!item.classList.contains("right")) {
+      if (!item.classList.contains("right") && !item.classList.contains("wrong")) {
         item.classList.remove("go");
         item.querySelector('.label').classList.remove("go_pick");
         item.classList.add("go_back");
         item.querySelector('.label').classList.add("go_back_pick");
       }
     }
-
+    if (!item.classList.contains("wrong")) {
+      item.classList.add("active");
+    }
   });
 });
 
