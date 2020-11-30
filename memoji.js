@@ -7,7 +7,7 @@ function getRandomPosition(min, max) {
 function mix() {
   let box = document.querySelector(".card_box");
   let elements = box.querySelectorAll('.card');
-  for (let i = 0; i < elements.length * 2; i++) {
+  for (let i = 0; i < elements.length ; i++) {
     let movedElement = getRandomPosition(0, elements.length);
     document.querySelector(".card_box").appendChild(elements[movedElement]);
   }
