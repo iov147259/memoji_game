@@ -55,24 +55,39 @@ function check(firstcard, secondcar) {
 let cards = Array.from(document.getElementsByClassName("card"));
 cards.forEach(function (item) {
   item.addEventListener("click", function (event) {
-
+    item.classList.remove("go_back_wrong");
+    item.classList.remove("rotate_wrong");
+    item.classList.remove("go_back");
+    item.querySelector('.label').classList.remove("go_back_pick");
     if (item.classList.contains("right")||item.classList.contains("wrong")) {
       return;
     }
 
+
+
     let activeNow = document.querySelectorAll(".active");
-    let wrong=document.querySelectorAll(".wrong");
-    if(wrong.length===2){
-      wrong[0].classList.add("go_back_wrong");
-      wrong[1].classList.add("go_back_wrong");
-    }
-    if (activeNow.length === 1 && item !== activeNow[0]) {
-      check(activeNow[0], item);
-    }
     if (activeNow.length === 2 ) {
       activeNow[0].classList.remove("active");
       activeNow[1].classList.remove("active");
     }
+
+
+    let wrong=document.querySelectorAll(".wrong");
+    if(wrong.length===2){
+      wrong[0].classList.add("go_back_wrong");
+      wrong[1].classList.add("go_back_wrong");
+      wrong[0].querySelector('.label').classList.add("go_back_pick");
+      wrong[1].querySelector('.label').classList.add("go_back_pick");
+      wrong[0].classList.remove("wrong");
+      wrong[0].classList.remove("wrong_static");
+      wrong[1].classList.remove("wrong_static");
+      wrong[1].classList.remove("rotate_wrong");
+      wrong[1].classList.remove("wrong");
+      wrong[0].classList.remove("go");
+      wrong[1].classList.remove("go");
+    }
+
+
     if (!item.classList.contains("go")) {
       if (item.classList.contains("go_back") ||item.classList.contains("wrong")) {
         item.classList.remove("wrong");
@@ -84,15 +99,23 @@ cards.forEach(function (item) {
 
 
     } else {
-      if (!item.classList.contains("right") && !item.classList.contains("wrong")) {
+      if (!item.classList.contains("right") || !item.classList.contains("wrong")) {
         item.classList.remove("go");
         item.querySelector('.label').classList.remove("go_pick");
         item.classList.add("go_back");
         item.querySelector('.label').classList.add("go_back_pick");
       }
     }
+
     if (!item.classList.contains("wrong")) {
       item.classList.add("active");
+    }
+    if (activeNow.length === 1 && item !== activeNow[0]) {
+      item.classList.remove("go_back_wrong");
+      item.classList.remove("rotate_wrong");
+      item.classList.remove("go_back");
+      item.querySelector('.label').classList.remove("go_back_pick");
+      check(activeNow[0], item);
     }
   });
 });
