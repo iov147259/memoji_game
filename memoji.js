@@ -50,11 +50,32 @@ function check(firstcard, secondcar) {
   }
 
 }
-
+let startimer=59;//объявляем начальный таймер
+let timer;
+function countdown(){
+if(startimer<10){
+  document.querySelector(".timer>.seconds").innerHTML="0"+startimer;
+}else {  document.querySelector(".timer>.seconds").innerHTML=startimer;}
+  document.querySelector(".timer>.minutes").innerHTML="00:"
+  if(startimer<1){
+    clearTimeout(timer);
+  }else{
+    timer=setTimeout(countdown,1000);
+  }
+  startimer--;
+}
 
 let cards = Array.from(document.getElementsByClassName("card"));
 cards.forEach(function (item) {
   item.addEventListener("click", function (event) {
+
+    let first=document.querySelectorAll(".first");
+    if(first.length===0)//проверка что активный элемент превый
+    {
+      countdown();
+    }//тут запускается таймер
+    item.classList.add("first");
+
     item.classList.remove("go_back_wrong");
     item.classList.remove("rotate_wrong");
     item.classList.remove("go_back");
