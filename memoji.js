@@ -50,6 +50,7 @@ function check(firstcard, secondcar) {
   }
 
 }
+let cards = Array.from(document.getElementsByClassName("card"));
 let startimer=59;//объявляем начальный таймер
 let timer;
 function countdown(){
@@ -59,13 +60,64 @@ if(startimer<10){
   document.querySelector(".timer>.minutes").innerHTML="00:"
   if(startimer<1){
     clearTimeout(timer);
+    document.querySelector(".background").style.visibility="visible";
+    document.querySelector(".lose").style.visibility="visible";
   }else{
     timer=setTimeout(countdown,1000);
   }
   startimer--;
 }
 
-let cards = Array.from(document.getElementsByClassName("card"));
+document.querySelector(".lose>.play_again").addEventListener("click", function again(){
+  startimer=59;
+  document.querySelector(".timer>.minutes").innerHTML="01:";
+  document.querySelector(".timer>.seconds").innerHTML="00";
+  document.querySelector(".background").style.visibility="hidden";
+  document.querySelector(".lose").style.visibility="hidden";
+  cards.forEach(function (item) {
+    item.classList.remove("right");
+    item.classList.remove("wrong");
+    item.classList.remove("go");
+    item.classList.remove("go_back");
+    item.querySelector('.label').classList.remove("go_pick");
+    item.querySelector('.label').classList.remove("go_back_pick");
+    item.classList.remove("right_torn");
+    item.classList.remove("first");
+    item.classList.remove("rotate_wrong");
+    item.classList.remove("wrong_static");
+    item.classList.remove("right_static");
+    item.classList.remove("active");
+    item.classList.remove("go_back_wrong");
+
+  });
+  mix();
+});
+document.querySelector(".win>.play_again").addEventListener("click", function again(){
+  startimer=59;
+  document.querySelector(".timer>.minutes").innerHTML="01:";
+  document.querySelector(".timer>.seconds").innerHTML="00";
+  document.querySelector(".background").style.visibility="hidden";
+  document.querySelector(".win").style.visibility="hidden";
+  cards.forEach(function (item) {
+    item.classList.remove("right");
+    item.classList.remove("wrong");
+    item.classList.remove("go");
+    item.classList.remove("go_back");
+    item.querySelector('.label').classList.remove("go_pick");
+    item.querySelector('.label').classList.remove("go_back_pick");
+    item.classList.remove("right_torn");
+    item.classList.remove("first");
+    item.classList.remove("rotate_wrong");
+    item.classList.remove("wrong_static");
+    item.classList.remove("right_static");
+    item.classList.remove("active");
+    item.classList.remove("go_back_wrong");
+
+  });
+  mix();
+});
+
+
 cards.forEach(function (item) {
   item.addEventListener("click", function (event) {
 
@@ -138,8 +190,16 @@ cards.forEach(function (item) {
       item.querySelector('.label').classList.remove("go_back_pick");
       check(activeNow[0], item);
     }
+    let right=document.querySelectorAll(".right");
+    if(right.length===12){
+      clearTimeout(timer);
+      document.querySelector(".background").style.visibility="visible";
+      document.querySelector(".win").style.visibility="visible";
+
+    }
   });
 });
+
 
 
 

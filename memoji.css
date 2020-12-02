@@ -11,8 +11,8 @@ body{
   flood-color: #434344;
   font-size: 42px;
   line-height: 47px;
-
 }
+.main{display: flex}
 .card_box{
   margin: 0 auto;
   width: 595px;
@@ -77,17 +77,32 @@ body{
   line-height: 36px;
 }
 .alert{
+top:30vh;
+  left: 39vw;
+ justify-content:center ;
+  z-index: 100;
   position: absolute;
   background-color: white;
 min-width: 350px;
   display: flex;
   flex-direction: column;
 }
+.background{
+  top: 0;
+  display: flex;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,0.5);
+  visibility: hidden;
+}
 .text{
+
   margin: 30px auto;
   font-size: 48px;
   justify-content: center;
   font-family: Arial;
+
 
 }
 .button_text{
@@ -96,6 +111,7 @@ min-width: 350px;
   font-family: Arial;
   color: white;
 }
+
 .play_again{
   border: none;
 box-shadow: 1px 1px 8px;
@@ -109,7 +125,47 @@ box-shadow: 1px 1px 8px;
   margin-bottom: 30px;
   height: 40px;
 }
+.liter{
+  display: inline-block;
+}
+.play_again:active{
+  box-shadow: inset 2px 1px 8px;
+}
+.alert.win>.text>.one{
+  animation: jumpliter 1s 0ms forwards ease-in infinite ;
+}
+.alert.win>.text>.two{
+  animation: jumpliter 1s 100ms forwards ease-in infinite ;
+}
+.alert.win>.text>.three{
+  animation: jumpliter 1s 200ms forwards ease-in infinite ;
+}
+.alert.win{
+visibility: hidden;
+}
+.alert.lose>.text>.one{
+  animation: jumpliter 1s 0ms forwards ease-in infinite ;
+}
+.alert.lose>.text>.two{
+  animation: jumpliter 1s 100ms forwards ease-in infinite ;
+}
+.alert.lose>.text>.three{
+  animation: jumpliter 1s 200ms forwards ease-in infinite ;
+}
+.alert.lose>.text>.four{
+  animation: jumpliter 1s 300ms forwards ease-in infinite ;
+}
+.alert.lose{
+  visibility: hidden;
+}
+@keyframes jumpliter {
+  from{ transform: scale(1,1.6);}
+  75%{transform: scale(1,0.1);
+  transform: translateY(30px);}
+  to{transform: scale(1,1.6);}
 
+
+}
 @keyframes right_static {
   from{transform: rotateY(180deg);
     background:white}
