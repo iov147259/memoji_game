@@ -14,6 +14,7 @@ body{
 }
 .main{display: flex}
 .card_box{
+  perspective: 600px;
   margin: 0 auto;
   width: 595px;
   height: 440px;
@@ -26,7 +27,7 @@ body{
   cursor: pointer;
   display: flex;
   outline: none;
-  perspective: 600px;
+
   width: 135px;
   height: 135px;
   border-radius: 9px;
@@ -40,32 +41,32 @@ body{
 }
 .go {
   outline: none;
-  animation: rotate linear 1s  0s forwards   ;
+  animation: rotate linear 600ms  0s forwards   ;
 }
 .go_pick{
-  animation: visibility linear 1s  600ms forwards ;
+  animation: visibility linear 600ms  400ms forwards ;
   font-size: 75px;
 }
 .right_static{
   animation: right_static 1ms forwards;
 }
 .go_back{
-  animation:reversrotate linear 1s  forwards ;
+  animation:reversrotate linear 600ms  forwards ;
 }
 .go_back_pick{font-size: 75px;
-  animation: nonvisibility linear 0.5s    backwards ;
+  animation: nonvisibility linear 0.3s    backwards ;
 }
 .right_torn{
-  animation: rotate_right linear 1s  0s forwards;
+  animation: rotate_right linear 600ms  0s forwards;
 }
 .rotate_wrong{
-  animation: rotate_wrong linear 1s  0s forwards;
+  animation: rotate_wrong linear 600ms  0s forwards;
 }
 .wrong_static{
   animation: wrong_static 1ms forwards;
 }
 .go_back_wrong{
-  animation:reversrotatewrong linear 1s  forwards ;
+  animation:reversrotatewrong linear 600ms  forwards ;
 }
 .timer{
   display: flex;

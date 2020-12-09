@@ -127,11 +127,12 @@ cards.forEach(function (item) {
       countdown();
     }//тут запускается таймер
     item.classList.add("first");
-
-    item.classList.remove("go_back_wrong");
-    item.classList.remove("rotate_wrong");
-    item.classList.remove("go_back");
-    item.querySelector('.label').classList.remove("go_back_pick");
+if(!item.classList.contains("wrong")) {
+  item.classList.remove("go_back_wrong");
+  item.classList.remove("rotate_wrong");
+  item.classList.remove("go_back");
+  item.querySelector('.label').classList.remove("go_back_pick");
+}
     if (item.classList.contains("right")||item.classList.contains("wrong")) {
       return;
     }
@@ -174,13 +175,14 @@ cards.forEach(function (item) {
     } else {
       if (!item.classList.contains("right") || !item.classList.contains("wrong")) {
         item.classList.remove("go");
+        item.classList.remove("active");
         item.querySelector('.label').classList.remove("go_pick");
         item.classList.add("go_back");
         item.querySelector('.label').classList.add("go_back_pick");
       }
     }
 
-    if (!item.classList.contains("wrong")) {
+    if (!item.classList.contains("wrong")&&!item.classList.contains("go_back")) {
       item.classList.add("active");
     }
     if (activeNow.length === 1 && item !== activeNow[0]) {
